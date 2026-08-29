@@ -1,0 +1,110 @@
+pre[class*='language-'] {
+  color: var(--color-slate-50);
+}
+
+.token.tag,
+.token.class-name,
+.token.selector,
+.token.selector .class,
+.token.selector.class,
+.token.function {
+  color: var(--color-pink-400);
+}
+
+.token.attr-name,
+.token.keyword,
+.token.rule,
+.token.pseudo-class,
+.token.important {
+  color: var(--color-slate-300);
+}
+
+.token.module {
+  color: var(--color-pink-400);
+}
+
+.token.attr-value,
+.token.class,
+.token.string,
+.token.property {
+  color: var(--color-sky-300);
+}
+
+.token.punctuation,
+.token.attr-equals {
+  color: var(--color-slate-500);
+}
+
+.token.unit,
+.language-css .token.function {
+  color: var(--color-teal-200);
+}
+
+.token.comment,
+.token.operator,
+.token.combinator {
+  color: var(--color-slate-400);
+}
+
+/* PHP and shell tokens — the grammars this site adds on top of the
+   prism-react-renderer bundle. */
+.token.variable,
+.token.symbol {
+  color: var(--color-sky-200);
+}
+
+.token.package,
+.token.namespace,
+.token.constant,
+.token.boolean,
+.token.number {
+  color: var(--color-teal-200);
+}
+
+.token.delimiter,
+.token.scope {
+  color: var(--color-slate-500);
+}
+
+.token.function-definition,
+.token.builtin {
+  color: var(--color-pink-400);
+}
+
+.token.deleted {
+  color: var(--color-rose-400);
+}
+
+.token.inserted {
+  color: var(--color-emerald-400);
+}
+
+/* Inline code. The template styles `pre` but leaves inline code with the
+   typography plugin's default backtick pseudo-elements — loud in a reference
+   that names a config key or a class in every other sentence. */
+.prose :where(code):not(:where(pre code)) {
+  border-radius: 0.25rem;
+  background-color: var(--color-slate-100);
+  padding: 0.125rem 0.375rem;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--color-slate-900);
+}
+
+.prose :where(code):not(:where(pre code))::before,
+.prose :where(code):not(:where(pre code))::after {
+  content: none;
+}
+
+:where(.dark) .prose :where(code):not(:where(pre code)) {
+  background-color: var(--color-slate-800);
+  color: var(--color-slate-200);
+}
+
+/* A chip is too heavy inside a heading — mono alone reads as code there. */
+.prose :where(h1, h2, h3, h4) :where(code) {
+  background-color: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
