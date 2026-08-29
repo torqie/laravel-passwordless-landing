@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000).
+Then open [http://localhost:3100](http://localhost:3100).
 
 ```bash
 npm run build   # production build

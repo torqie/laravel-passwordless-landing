@@ -10,6 +10,7 @@ import { Logo, Logomark } from '@/components/Logo'
 import { MobileNavigation } from '@/components/MobileNavigation'
 import { Navigation } from '@/components/Navigation'
 import { Search } from '@/components/Search'
+import { type ProjectStats } from '@/lib/stats'
 import { ThemeSelector } from '@/components/ThemeSelector'
 
 function GitHubIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -69,7 +70,13 @@ function Header() {
   )
 }
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({
+  children,
+  stats,
+}: {
+  children: React.ReactNode
+  stats: ProjectStats
+}) {
   let pathname = usePathname()
   let isHomePage = pathname === '/'
 
@@ -77,7 +84,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex w-full flex-col">
       <Header />
 
-      {isHomePage && <Hero />}
+      {isHomePage && <Hero stats={stats} />}
 
       <div className="relative mx-auto flex w-full max-w-8xl flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
         <div className="hidden lg:relative lg:block lg:flex-none">

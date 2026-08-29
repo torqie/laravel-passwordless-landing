@@ -5,6 +5,8 @@ import clsx from 'clsx'
 
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
+import { site } from '@/lib/site'
+import { getProjectStats } from '@/lib/stats'
 
 import '@/styles/tailwind.css'
 
@@ -22,19 +24,30 @@ const lexend = localFont({
 })
 
 export const metadata: Metadata = {
+  // Resolves the relative URLs in the social card metadata below.
+  metadataBase: new URL(site.url),
   title: {
-    template: '%s - Laravel Passwordless',
-    default: 'Laravel Passwordless - No passwords. Just a link or a code.',
+    template: `%s - ${site.name}`,
+    default: site.title,
   },
-  description:
-    'Drop-in magic link and one-time code authentication for Laravel. Routes, views, emails and rate limiting included — and every piece of it swappable.',
+  description: site.description,
+  openGraph: {
+    type: 'website',
+    siteName: site.name,
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  let stats = await getProjectStats()
+
   return (
     <html
       lang="en"
@@ -43,7 +56,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full bg-white dark:bg-slate-900">
         <Providers>
-          <Layout>{children}</Layout>
+          <Layout stats={stats}>{children}</Layout>
         </Providers>
       </body>
     </html>

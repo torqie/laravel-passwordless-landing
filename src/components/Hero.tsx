@@ -4,7 +4,9 @@ import clsx from 'clsx'
 import { Highlight } from 'prism-react-renderer'
 
 import { Button } from '@/components/Button'
+import { HeroStats } from '@/components/HeroStats'
 import { Prism } from '@/lib/prism-languages'
+import { type ProjectStats } from '@/lib/stats'
 import { HeroBackground } from '@/components/HeroBackground'
 import blurCyanImage from '@/images/blur-cyan.png'
 import blurIndigoImage from '@/images/blur-indigo.png'
@@ -31,7 +33,7 @@ function TrafficLightsIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-export function Hero() {
+export function Hero({ stats }: { stats: ProjectStats }) {
   return (
     <div className="overflow-hidden bg-slate-900 dark:-mt-19 dark:-mb-32 dark:pt-19 dark:pb-32">
       <div className="py-16 sm:px-2 lg:relative lg:px-0 lg:py-20">
@@ -64,6 +66,7 @@ export function Hero() {
                   View on GitHub
                 </Button>
               </div>
+              <HeroStats stats={stats} />
             </div>
           </div>
           <div className="relative lg:static xl:pl-10">
